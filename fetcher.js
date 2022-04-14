@@ -7,8 +7,8 @@ let arguments = process.argv.slice(2);
 //URL and path is coming from commandline
 
 
-
-request(arguments[0],(error, response, body)=>{
+const URL = arguments[0]
+request(URL,(error, response, body)=>{
   if (error) {
     console.log('Error!');
   }
@@ -17,7 +17,8 @@ request(arguments[0],(error, response, body)=>{
   }
   
   const content = body;
-  fs.writeFile(arguments[1], content, err => {
+  const filePath = arguments[1]
+  fs.writeFile(filePath, content, err => {
     if (err) {
       console.error(err);
       return;
